@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    color: #ddd;
+    font: 16px/1.5 var(--font);
+    letter-spacing: 0.1em;
+    text-shadow: var(--text-shadow);
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 100% 20px;
+}
+
+body::after {
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+canvas {
+    position: relative;
+    top: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    background-color: black;
+    width: 100;
+    height: 100;
+}
+
+canvas::before,
+canvas::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15));
+    top: -4px;
+    right: -4px;
+    bottom: -4px;
+    left: -4px;
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    canvas {
+        top: 110px;
+        width: 90%;
+        height: 90%;
+    }
+}
+
+.game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #8B0000;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+    display: none;
+    padding: 20px;
+}
+
+.game-over h1 {
+    margin-bottom: 30px;
+    font-size: 48px;
+}
+
+.game-over .subtitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.game-over button {
+    background-color: #fff;
+    color: #8B0000;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.game-over button:hover {
+    background-color: #ccc;
+}
+
+.you-win {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #008000;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+    display: none;
+    padding: 20px;
+}
+
+.you-win h1 {
+    margin-bottom: 30px;
+    font-size: 48px;
+}
+
+.you-win .subtitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.you-win button {
+    background-color: #fff;
+    color: #008000;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.you-win button:hover {
+    background-color: #ccc;
+}
