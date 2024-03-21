@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>String Matcher</title>
+<style>
+  /* Center align the content */
+  body {
+    font-family: Arial, sans-serif; /* Font style */
+    background-color: #f9fafb; /* Light gray background color */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  /* Container for the content */
+  .container {
+    max-width: 600px;
+    background-color: #fff; /* White background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth effect */
+    animation: fadeIn 0.5s ease forwards; /* Fade-in animation */
+  }
+  /* Heading style */
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text color */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: slideInDown 0.5s ease forwards; /* Slide-in animation */
+  }
+  /* Input field style */
+  input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  input[type="text"]:focus {
+    border-color: #4CAF50; /* Green border color on focus */
+  }
+  /* Button style */
+  input[type="submit"] {
+    width: calc(100% - 40px);
+    padding: 15px;
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  /* Output message style */
+  #output {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #4CAF50; /* Green result box */
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards; /* Fade-in animation */
+  }
+  /* Popping animation */
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  /* Slide-in animation */
+  @keyframes slideInDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Last One</h1>
+  <h4>Enter the number string you received from all the QR Codes in sequence to unlock the final gift</h4>
+  <form id="inputForm" onsubmit="matchString(event)">
+    <input type="text" id="inputString" placeholder="Enter your string..." style="background-color: #f0f8ff; color: #333;" onclick="addCharacters()">
+    <input type="submit" value="Check" style="background-color: #007bff; border-color: #007bff;">
+  </form>
+  <div id="output"></div>
+  <p id="out"></p>
+</div>
+
+<script>
+
+function matchString(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Get input value
+  var inputString = document.getElementById('inputString').value.trim().toLowerCase();
+  
+  // Define hardcoded strings based on user input
+  var output;
+  const out = document.getElementById('out');
+  switch (inputString) {
+    case '63885544434351112313810033478312':
+      output = 'Correct Answer. But This was a prank! There is no real gift 😁 Ask Rachit for real code';
+      break;
+    case 'ranjucrazy':
+      output = 'Perfect! Receive the Final Gift Now.';
+      out.innerHTML = '<a href = "final.html?name=YOUARETHEBEST">Click Me. Btw you can use that previous code in decoder to get one more gift. Just a suggestion.</a>';
+      break;
+    default:
+      output = 'Uh huh. It is incorrect.';
+  }
+  
+  // Display output message with animation
+  var outputDiv = document.getElementById('output');
+  outputDiv.textContent = output;
+  
+  // Add popping animation if match found
+  if (output !== 'No matching information found') {
+    outputDiv.style.animation = 'pop 0.5s ease forwards';
+  }
+}
+</script>
+
+</body>
+</html>

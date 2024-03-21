@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virus Alert</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        animation: flashBackground 1s infinite alternate;
+    }
+    .container {
+        max-width: 600px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: #ff0000;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        animation: flashContainer 1s infinite alternate;
+    }
+    h1 {
+        color: #ff0000;
+        animation: flashText 1s infinite alternate;
+    }
+    button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #555;
+    }
+    #countdown {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+    input[type="text"] {
+        margin-top: 10px;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    @keyframes flashBackground {
+        0% {
+            background-color: #000;
+        }
+        100% {
+            background-color: #222;
+        }
+    }
+    @keyframes flashContainer {
+        0% {
+            background-color: #ff0000;
+        }
+        100% {
+            background-color: #cc0000;
+        }
+    }
+    @keyframes flashText {
+        0% {
+            color: #ff0000;
+        }
+        100% {
+            color: #fff; /* Changed the text color to white */
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Virus Alert!</h1>
+        <p>Your device has been infected with a dangerous virus!</p>
+        <p>Please choose one of the following actions:</p>
+        <button onclick="ignoreVirus()">Ignore Virus</button>
+        <button onclick="toggleDownloadAntivirus()">Download Antivirus</button>
+        <button onclick="toggleActivateAntivirus()">Activate Antivirus</button>
+        <button onclick="activateFirewall()">Activate Firewall</button>                
+        <div id="countdown"></div>
+        <div id="hackCode" style="display: none;">
+            <label for="code">Unhack the device by entering the code:</label><br>
+            <input type="text" id="code" name="code">
+            <button onclick="checkCode()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function activateFirewall() {
+            var countdownElement = document.getElementById("countdown");
+            countdownElement.innerHTML = "Your device will blast in 20 seconds... Think of a strange word you saw in previous website!";
+            var count = 20;
+            var countdownInterval = setInterval(function() {
+                count--;
+                countdownElement.innerHTML = "Device has been compromised! Blast initiated " + count + " seconds...";
+                if (count <= 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("hackCode").style.display = "block";
+                }
+            }, 1000);
+        }
+
+        function ignoreVirus() {
+            alert("Ignoring the virus... hope for the best! Everything will remain as it is.");
+        }
+
+        function toggleDownloadAntivirus() {
+            var button = document.querySelector('button:nth-of-type(2)');
+            if (button.innerText === 'Download Antivirus') {
+                button.innerText = 'Download Virus';
+            } else {
+                button.innerText = 'Download Antivirus';
+            }
+            alert("Oops.. look again which button you have clicked 😂 Downloading the deadliest virus in your system");
+        }
+
+        function toggleActivateAntivirus() {
+            var button = document.querySelector('button:nth-of-type(3)');
+            if (button.innerText === 'Activate Antivirus') {
+                button.innerText = 'Activate Virus';
+            } else {
+                button.innerText = 'Activate Antivirus';
+            }
+            alert("HAHAHHAHAHAH ACTIVATING THE VIRUS IN YOUR SYSTEM! AGAIN YOU HAVE BEEN FOOOLEDD LOOOLL. Your only hope is not to activate the firewall");
+        }
+
+        function checkCode() {
+            var input = document.getElementById("code").value;
+            var input2 = document.getElementById("code").value;
+            if (input.toLowerCase() === "babadook") {
+                alert('The answer is correct. Convert it in the converter and try again babe.');
+                
+            }
+            else if (input2.toLowerCase() === "ededgrm"){
+                alert('You Rock!');
+                window.location.href = "final.html?name=KINDNESS4ALL"; // Redirect to the desired page
+            } else {
+                alert("Still hacked");
+            }
+        }
+    </script>
+</body>
+</html>

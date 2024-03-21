@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speech Verification</title>
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        text-align: center;
+        background-color: #fd4b4b;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    #message {
+        margin-top: 50px;
+        font-size: 24px;
+        transition: color 0.3s ease;
+    }
+    #spokenText {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    #link {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    #startButton, #stopButton, #hint {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    #startButton:hover, #stopButton:hover, #hint:hover, #link:hover {
+        background-color: #0056b3;
+    }
+    #hintMessage {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #007bff;
+        display: none;
+    }
+    .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 100px;
+        height: auto;
+    }
+    .sticker1 {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        width: 100px;
+        height: auto;
+        transform: rotate(-15deg);
+        animation: float 3s ease infinite;
+    }
+    .sticker2 {
+        position: absolute;
+        top: 80%;
+        right: 10%;
+        width: 100px;
+        height: auto;
+        transform: rotate(15deg);
+        animation: float 3s ease infinite;
+    }
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+<div id="container">
+    <img src="Images/2.jpg" alt="Logo" class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/3608/3608382.png" alt="Sticker" class="sticker1">
+    <img src="https://www.svgrepo.com/show/24782/dog.svg" alt="Sticker" class="sticker2">
+    <h1>Speech Authorization</h1>
+    <p>We need to verify that you are Ranjana only. So we will need to take a voice test. Please proceed with the Start Speaking button and speak a single sentence which contains all alphabets in the english dictionary.</p>
+    <div id="message"></div>
+    <div id="spokenText"></div>
+    <a href="#" id="link" style="display: none;">Click here</a>
+
+    <button id="startButton" onclick="startSpeechRecognition()">Start Speaking</button>
+    <button id="stopButton" onclick="stopSpeechRecognition()" style="display: none;">Stop Speaking</button>
+
+    <button id="hint" onclick="displayHint()">Hint</button>
+    <div id="hintMessage">Look all around the website, they are hints. Ask chatgpt if you want</div>
+</div>
+
+<script>
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+
+    recognition.onresult = function(event) {
+        const result = event.results[0][0].transcript.trim().toLowerCase(); // Convert spoken text to lowercase
+        document.getElementById('spokenText').innerText = "You said: " + event.results[0][0].transcript;
+        const requiredString = "the quick brown fox jumps over the lazy dog";
+        const requiredString2 = "i am a good girl";
+        const requiredString3 = "quick brown fox jumps over the lazy dog";
+        if (result === requiredString || result === requiredString2 || result === requiredString3) {
+            document.getElementById('message').innerText = "Congratulations! You've spoken the correct string.";
+            document.getElementById('link').style.display = 'block';
+        } else {
+            document.getElementById('message').innerText = "Sorry, the spoken string doesn't match our required string.";
+        }
+    };
+
+    function startSpeechRecognition() {
+        recognition.start();
+        document.getElementById('startButton').style.display = 'none';
+        document.getElementById('stopButton').style.display = 'block';
+        document.getElementById('hintMessage').style.display = 'none'; // Hide hint message
+    }
+
+    function stopSpeechRecognition() {
+        recognition.stop();
+        document.getElementById('startButton').style.display = 'block';
+        document.getElementById('stopButton').style.display = 'none';
+        document.getElementById('spokenText').innerText = ''; // Clear spoken text
+    }
+
+    function displayHint() {
+        const hintMessage = document.getElementById('hintMessage');
+        if (hintMessage.style.display === 'none') {
+            hintMessage.style.display = 'block';
+        } else {
+            hintMessage.style.display = 'none';
+        }
+    }
+
+    document.getElementById('link').addEventListener('click', function(event) {
+        event.preventDefault();
+        alert('Good job. Take this code:-RONJONA and enter decode it using decoder then enter it in converter, you will get the gift!')
+    });
+</script>
+</body>
+</html>

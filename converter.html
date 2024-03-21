@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Converter</title>
+<style>
+  /* Center align the content */
+  body {
+    font-family: Arial, sans-serif; /* Font style */
+    background-color: #f0f0f0; /* Light gray background color */
+    margin: 0;
+    padding: 20px;
+  }
+  /* Container for the content */
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff; /* White background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth effect */
+  }
+  /* Heading style */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text color */
+  }
+  /* Input field style */
+  input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  /* Button style */
+  input[type="submit"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  /* Result message style */
+  #result {
+    margin-top: 20px;
+  }
+  /* Link style */
+  #result a {
+    display: block;
+    margin-bottom: 5px;
+    color: #007bff; /* Blue link color */
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Hi, I am Converter</h1>
+  <h4>I am one of your gift. You might need me to find rest of your gifts. Save me for Future use!.</h4>
+  <form id="inputForm" onsubmit="matchString(event)">
+    <input type="text" id="inputString" placeholder="Enter your encoded string...">
+    <input type="submit" value="Decrypt">
+  </form>
+  <div id="result"></div>
+</div>
+
+<script>
+function matchString(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Get input value
+  var inputString = document.getElementById('inputString').value.trim();
+  
+  // Define hardcoded links based on user input
+  var links;
+  switch (inputString) {
+    case 'tril':
+      links = [
+        {text : "The result is- Nature", url: '#'},
+        // { text: 'Proceed', url: '' }
+      ];
+      break;
+    case 'lion':
+      links = [
+        { text: 'The result is- Mysterious', url: '#' }
+      ];
+      break;
+    case 'SSSWOWPEWPEWSAYA':
+      links = [
+        { text: 'The result is- nicebuttocks', url: '#' }
+      ];
+      break;
+    case 'URQMRQD':
+      links = [
+        { text: 'Yes maam we have your gift ready!', url: 'final.html?name=EA8HEALTHY' }
+      ];
+      break;
+    case '63885544434351112313810033478312':
+      links = [
+        { text: 'I see, you are here for one more gift. Lalchi. Go Take it. I must tell you that there is one final gift when you decode the code you get from this QR using decoder and come back here to put that code', url: 'final.html?name=H4PPYH3ART' }
+      ];
+      break;
+      case 'K4SSBK3DUW':
+      links = [
+        { text: 'Kudos to you dude. Finally reached the last stage. Click me and shewww Bye Bye', url: 'final.html?name=JOYFUL2024' }
+      ];
+      break;
+    default:
+      links = [{ text: 'No matching information found :( ', url: '#' }];
+  }
+  
+  // Display links
+  var resultDiv = document.getElementById('result');
+  resultDiv.innerHTML = '';
+  links.forEach(function(link) {
+    var anchor = document.createElement('a');
+    anchor.textContent = link.text;
+    anchor.href = link.url;
+    resultDiv.appendChild(anchor);
+  });
+}
+</script>
+
+</body>
+</html>

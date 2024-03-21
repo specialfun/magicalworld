@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>calendar</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f8f8;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  div {
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  .check-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+  }
+  .orange { background-color: #ff7f0e; }
+  .pink { background-color: #ff6b6b; }
+  .blue { background-color: #5bc0de; }
+  .green { background-color: #5cb85c; }
+  .check-btn:hover {
+    background-color: #4e4e4e;
+    transform: scale(1.1);
+  }
+  #result {
+    font-size: 24px;
+    margin-top: 20px;
+    text-align: center;
+    color: #333;
+  }
+  #finalInputContainer {
+    display: none;
+  }
+  #link-form {
+    text-align: center;
+  }
+  #link-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  #link {
+    margin-top: 20px;
+    text-align: center;
+  }
+  #link a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  #link a:hover {
+    color: #0056b3;
+  }
+</style>
+</head>
+<body>
+<h1>Enter the Date and Time when following phrases were first seen in our whatsapp chat</h1>
+<form id="date-time-form">
+  <div>
+    <label for="datetime1">Shik Shak Shok</label>
+    <input type="datetime-local" id="datetime1" name="datetime1" value="2024-03-15T09:00">
+    <button type="button" class="check-btn orange" onclick="checkDateTime('datetime1')">Check</button>
+  </div>
+
+  <div>
+    <label for="datetime2">Ek dum Krishna Lage che</label>
+    <input type="datetime-local" id="datetime2" name="datetime2" value="2024-03-16T10:00">
+    <button type="button" class="check-btn pink" onclick="checkDateTime('datetime2')">Check</button>
+  </div>
+
+  <div>
+    <label for="datetime3">Date and Time 3:</label>
+    <input type="datetime-local" id="datetime3" name="datetime3" value="2024-03-17T11:00">
+    <button type="button" class="check-btn blue" onclick="checkDateTime('datetime3')">Check</button>
+  </div>
+
+  <div>
+    <label for="datetime4">Date and Time 4:</label>
+    <input type="datetime-local" id="datetime4" name="datetime4" value="2024-03-18T12:00">
+    <button type="button" class="check-btn green" onclick="checkDateTime('datetime4')">Check</button>
+  </div>
+</form>
+
+<div id="result"></div>
+
+<div id="finalInputContainer">
+  <form id="link-form">
+    <div>
+      <label for="finalInput">Final Input:</label>
+      <input type="text" id="finalInput" name="finalInput">
+      <button type="button" class="check-btn blue" onclick="checkFinalInput()">Check</button>
+    </div>
+  </form>
+</div>
+
+<div id="link"></div>
+
+<script>
+  let successfulChecks = 0;
+
+  function checkDateTime(inputId) {
+    const inputDateTime = new Date(document.getElementById(inputId).value);
+
+    // Define predefined dates for comparison
+    const predefinedDateTime1 = new Date('2024-03-15T09:00');
+    const predefinedDateTime2 = new Date('2024-03-16T10:00');
+    const predefinedDateTime3 = new Date('2024-03-17T11:00');
+    const predefinedDateTime4 = new Date('2024-03-18T12:00');
+
+    let result = '';
+
+    // Compare input date with predefined dates
+    if (inputDateTime.getTime() === predefinedDateTime1.getTime()) {
+      result = 'Correct Date! Your unique code is: SSS' ;
+      successfulChecks++;
+    } else if (inputDateTime.getTime() === predefinedDateTime2.getTime()) {
+      result = 'Correct Date! Your unique code is: WOW';
+      successfulChecks++;
+    } else if (inputDateTime.getTime() === predefinedDateTime3.getTime()) {
+      result = 'Correct Date! Your unique code is: PEWPEW';
+      successfulChecks++;
+    } else if (inputDateTime.getTime() === predefinedDateTime4.getTime()) {
+      result = 'Correct Date! Your unique code is: SAYA';
+      successfulChecks++;
+    } else {
+      result = 'No Match for ' + inputId;
+    }
+
+    document.getElementById('result').textContent = result;
+
+    // Check if all matches are successful
+    if (successfulChecks === 4) {
+      document.getElementById('finalInputContainer').style.display = 'block';
+    }
+  }
+
+  function checkFinalInput() {
+    const inputValue = document.getElementById('finalInput').value;
+
+    if (inputValue === 'nicebuttocks') {
+      document.getElementById('link').innerHTML = '<a href="final.html?name=ATTRACTGOODNES7">Success! Click here</a>';
+    } 
+    else if (inputValue === 'SSSWOWPEWPEWSAYA'){
+      document.getElementById('link').innerHTML = '<p>Appreciate your efforts, but please use converter</p>';
+    }
+    else {
+      document.getElementById('link').textContent = 'Error: Input does not match ABCD';
+    }
+  }
+</script>
+
+</body>
+</html>

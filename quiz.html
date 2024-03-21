@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+<style>
+  /* Center align the content */
+  body {
+    font-family: Arial, sans-serif; /* Font style */
+    background-color: #f9f9f9; /* Light gray background color */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  /* Container for the quiz */
+  .quiz-container {
+    max-width: 800px;
+    background-color: #fff; /* White background color */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth effect */
+  }
+  /* Heading style */
+  h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333; /* Dark gray text color */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  /* Question style */
+  .question {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333; /* Dark gray text color */
+  }
+  /* Options style */
+  .options label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .options input[type="radio"] {
+    margin-right: 10px;
+  }
+  /* Button style */
+  input[type="submit"] {
+    padding: 12px 24px;
+    background-color: #007bff; /* Blue button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  /* Result message style */
+  #result {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h1>Quiz</h1>
+  <form id="quizForm">
+    <div class="question">1. What is the capital of India?</div>
+    <div class="options">
+      <label><input type="radio" name="question1" value="Delhi"> Delhi</label>
+      <label><input type="radio" name="question1" value="Mumbai"> Mumbai</label>
+      <label><input type="radio" name="question1" value="Kolkata"> Kolkata</label>
+      <label><input type="radio" name="question1" value="Chennai"> Chennai</label>
+    </div>
+    
+    <!-- Add more questions here -->
+    <!-- Question 2 -->
+    <div class="question">2. Which Indian city is known as the "Pink City"?</div>
+    <div class="options">
+      <label><input type="radio" name="question2" value="Jaipur"> Jaipur</label>
+      <label><input type="radio" name="question2" value="Udaipur"> Udaipur</label>
+      <label><input type="radio" name="question2" value="Jodhpur"> Jodhpur</label>
+      <label><input type="radio" name="question2" value="Ahmedabad"> Ahmedabad</label>
+    </div>
+    
+    <!-- Question 3 -->
+    <div class="question">3. What is the value of π (pi) correct to two decimal places?</div>
+    <div class="options">
+      <label><input type="radio" name="question3" value="3.14"> 3.14</label>
+      <label><input type="radio" name="question3" value="3.16"> 3.16</label>
+      <label><input type="radio" name="question3" value="3.12"> 3.12</label>
+      <label><input type="radio" name="question3" value="3.18"> 3.18</label>
+    </div>
+    
+    <!-- Question 4 -->
+    <div class="question">4. Who discovered the theory of relativity?</div>
+    <div class="options">
+      <label><input type="radio" name="question4" value="Isaac Newton"> Isaac Newton</label>
+      <label><input type="radio" name="question4" value="Albert Einstein"> Albert Einstein</label>
+      <label><input type="radio" name="question4" value="Stephen Hawking"> Stephen Hawking</label>
+      <label><input type="radio" name="question4" value="Galileo Galilei"> Galileo Galilei</label>
+    </div>
+    
+    <!-- Question 5 -->
+    <div class="question">5. What is the chemical symbol for gold?</div>
+    <div class="options">
+      <label><input type="radio" name="question5" value="Au"> Au</label>
+      <label><input type="radio" name="question5" value="Ag"> Ag</label>
+      <label><input type="radio" name="question5" value="Fe"> Fe</label>
+      <label><input type="radio" name="question5" value="Cu"> Cu</label>
+    </div>
+    
+    <!-- Question 6 -->
+    <div class="question">6. Which Indian scientist won the Nobel Prize in Physics in 1930?</div>
+    <div class="options">
+      <label><input type="radio" name="question6" value="C. V. Raman"> C. V. Raman</label>
+      <label><input type="radio" name="question6" value="Satyendra Nath Bose"> Satyendra Nath Bose</label>
+      <label><input type="radio" name="question6" value="Homi J. Bhabha"> Homi J. Bhabha</label>
+      <label><input type="radio" name="question6" value="Meghnad Saha"> Meghnad Saha</label>
+    </div>
+    
+    <!-- Question 7 -->
+    <div class="question">7. What is the largest bone in the human body?</div>
+    <div class="options">
+      <label><input type="radio" name="question7" value="Femur"> Femur</label>
+      <label><input type="radio" name="question7" value="Tibia"> Tibia</label>
+      <label><input type="radio" name="question7" value="Humerus"> Humerus</label>
+      <label><input type="radio" name="question7" value="Radius"> Radius</label>
+    </div>
+    
+    <!-- Question 8 -->
+    <div class="question">8. Who wrote the famous book "The Discovery of India"?</div>
+    <div class="options">
+      <label><input type="radio" name="question8" value="Mahatma Gandhi"> Mahatma Gandhi</label>
+      <label><input type="radio" name="question8" value="Jawaharlal Nehru"> Jawaharlal Nehru</label>
+      <label><input type="radio" name="question8" value="Rabindranath Tagore"> Rabindranath Tagore</label>
+      <label><input type="radio" name="question8" value="Swami Vivekananda"> Swami Vivekananda</label>
+    </div>
+    
+    <!-- Question 9 -->
+    <div class="question">9. What is the unit of electrical resistance?</div>
+    <div class="options">
+      <label><input type="radio" name="question9" value="Ampere"> Ampere</label>
+      <label><input type="radio" name="question9" value="Volt"> Volt</label>
+      <label><input type="radio" name="question9" value="Ohm"> Ohm</label>
+      <label><input type="radio" name="question9" value="Watt"> Watt</label>
+    </div>
+    
+    <!-- Question 10 -->
+    <div class="question">10. Which Indian city is known as the "City of Lakes"?</div>
+    <div class="options">
+      <label><input type="radio" name="question10" value="Udaipur"> Udaipur</label>
+      <label><input type="radio" name="question10" value="Kochi"> Kochi</label>
+      <label><input type="radio" name="question10" value="Varanasi"> Varanasi</label>
+      <label><input type="radio" name="question10" value="Bhopal"> Bhopal</label>
+    </div>
+    
+    <input type="submit" value="Submit Quiz">
+  </form>
+  <div id="result"></div>
+</div>
+
+<script>
+  alert('Get minimum 7 answers correct to win this quiz.')
+document.getElementById('quizForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Correct answers array
+  var correctAnswers = [
+    'Delhi', // Question 1
+    'Jaipur', // Question 2
+    '3.14', // Question 3
+    'Albert Einstein', // Question 4
+    'Au', // Question 5
+    'C. V. Raman', // Question 6
+    'Femur', // Question 7
+    'Jawaharlal Nehru', // Question 8
+    'Ohm', // Question 9
+    'Udaipur' // Question 10
+  ];
+
+  // Get user's answers
+  var score = 0;
+  var totalQuestions = 10;
+
+  for (var i = 1; i <= totalQuestions; i++) {
+    var selectedOption = document.querySelector('input[name="question' + i + '"]:checked');
+    if (selectedOption) {
+      if (selectedOption.value === correctAnswers[i - 1]) {
+        score++;
+      }
+    }
+  }
+
+  // Display result
+  var resultDiv = document.getElementById('result');
+  if (score >= 7) {
+    resultDiv.innerHTML = 'Congratulations! You scored ' + score + ' out of ' + totalQuestions + '. <a href="final.html?name=GRO6STRONGER">Click here</a> to claim your prize!';
+  } else {
+    resultDiv.innerHTML = 'Sorry! You scored ' + score + ' out of ' + totalQuestions + '. Please try again!';
+  }
+});
+</script>
+
+</body>
+</html>

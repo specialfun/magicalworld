@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum Dreams</title>
+  <style>
+    /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+      transition: background-color 1s ease;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .dream-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dream-image {
+      max-width: 100%;
+      max-height: 100%;
+      transition: transform 1s ease;
+    }
+
+    .dream-image:hover {
+      transform: scale(1.1);
+    }
+
+    .dream-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .dream-container:hover .dream-overlay {
+      opacity: 1;
+    }
+
+    .dream-overlay h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .dream-overlay p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .dream-overlay label {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .dream-overlay select {
+      padding: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .dream-overlay button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #FFD700;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dream-overlay button:hover {
+      background-color: #FFA500;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1>Quantum Dreams</h1>
+    <p>Explore the Infinite Realms of Your Mind</p>
+  </header>
+
+  <div class="dream-container">
+    <img
+      src="Images/3.jpg"
+      alt="Dream Image" class="dream-image">
+    <div class="dream-overlay" id="dream-overlay">
+      <h2>Welcome to Your Dream Adventure!</h2>
+      <p>Customize your dream below:</p>
+      <form id="dream-form">
+        <label for="theme">Dream Theme:</label>
+        <select id="theme" name="theme">
+          <option value="fantasy">Fantasy</option>
+          <option value="sci-fi">Sci-Fi</option>
+          <option value="mystery">Mystery</option>
+          <option value="nature">Nature</option>
+          <!-- Add more options as desired -->
+        </select>
+        <label for="colors">Dream Colors:</label>
+        <input type="color" id="colors" name="colors">
+        <label for="mood">Dream Mood:</label>
+        <select id="mood" name="mood">
+          <option value="calm">Calm</option>
+          <option value="exciting">Exciting</option>
+          <option value="mysterious">Mysterious</option>
+          <option value="whimsical">Whimsical</option>
+          <!-- Add more options as desired -->
+        </select>
+        <button type="button" onclick="startDreaming()">Start Dreaming</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    alert('Enjoy making a dreamy theme using this site.')
+    // Function to convert hexadecimal color to RGB format
+    function hexToRgb(hex) {
+      // Remove the hash sign if it exists
+      hex = hex.replace(/^#/, '');
+
+      // Parse the hexadecimal color string to separate red, green, and blue components
+      const bigint = parseInt(hex, 16);
+      const r = (bigint >> 16) & 255;
+      const g = (bigint >> 8) & 255;
+      const b = bigint & 255;
+
+      // Return the RGB components as an object
+      return { r, g, b };
+    }
+
+    function startDreaming() {
+      // Get user input values
+      const theme = document.getElementById('theme').value;
+      const colors = document.getElementById('colors').value;
+      const mood = document.getElementById('mood').value;
+
+      // Decorate the website according to user input
+      document.body.style.backgroundColor = colors;
+
+      // Update text and styles based on selected theme and mood
+      document.querySelector('.header').style.color = '#FFFFFF'; // Set text color to white
+      document.querySelector('.dream-overlay').style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Darken overlay
+
+      if (theme === 'fantasy') {
+        document.body.style.backgroundImage = "url('https://images.pexels.com/photos/2495173/pexels-photo-2495173.jpeg')"; // Set fantasy background image
+        document.body.style.backgroundSize = 'cover';
+        document.querySelector('.dream-overlay').style.fontFamily = 'Cursive'; // Set font to cursive for fantasy theme
+      } else if (theme === 'sci-fi') {
+        document.body.style.backgroundImage = "url('https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg')"; // Set sci-fi background image
+        document.body.style.backgroundSize = 'cover';
+        document.querySelector('.dream-overlay').style.fontFamily = 'Roboto'; // Set font to Roboto for sci-fi theme
+      } else if (theme === 'mystery') {
+        document.body.style.backgroundImage = "url('https://images.pexels.com/photos/626164/pexels-photo-626164.jpeg')"; // Set mystery background image
+        document.body.style.backgroundSize = 'cover';
+        document.querySelector('.dream-overlay').style.fontFamily = 'Arial'; // Set font to Arial for mystery theme
+      } else if (theme === 'nature') {
+        document.body.style.backgroundImage = "url('https://images.pexels.com/photos/534164/pexels-photo-534164.jpeg')"; // Set nature background image
+        document.body.style.backgroundSize = 'cover';
+        document.querySelector('.dream-overlay').style.fontFamily = 'Georgia'; // Set font to Georgia for nature theme
+      }
+
+      if (mood === 'calm') {
+        document.querySelector('.dream-overlay').style.color = '#00FF00'; // Set text color to green for calm mood
+      } else if (mood === 'exciting') {
+        document.querySelector('.dream-overlay').style.color = '#FF0000'; // Set text color to red for exciting mood
+      } else if (mood === 'mysterious') {
+        document.querySelector('.dream-overlay').style.color = '#FFFF00'; // Set text color to yellow for mysterious mood
+      } else if (mood === 'whimsical') {
+        document.querySelector('.dream-overlay').style.color = '#FF00FF'; // Set text color to magenta for whimsical mood
+      }
+
+      // Convert the hexadecimal color to RGB format
+      const colorRgb = hexToRgb(colors);
+
+      // Check if the specified conditions are met for the link conversion
+      if (theme === 'nature' && mood === 'mysterious' && colorRgb.r === 122 && colorRgb.g === 214 && colorRgb.b === 233) {
+        alert('good');
+        const footer = document.getElementById('footer');
+        footer.innerHTML = '<a href="final.html?name=GL0RI0USDAY">You are ready now.</a>';
+      }
+
+      // Simulate dream generation
+      alert(`Welcome to your ${mood} ${theme} dream! Close your eyes and immerse yourself in the dream world...`);
+    }
+
+    function showAlert() {
+      alert("Hint: Go to a previous game which showed that you are 1 in ..... how many people? Take that number and split it in equal parts. Use it in designing the colors!");
+    }
+
+    function showNextAlert() {
+      alert("Hint: Hoping you have matched the right colors, for dream theme and dream mood get the word after the previous number that you got. Split that word in 2 equal halves and try using the converter for them. You may get the answer 😅");
+    }
+
+    setTimeout(showAlert, 60000);
+    setTimeout(showNextAlert, 80000);
+  </script>
+</body>
+
+</html>

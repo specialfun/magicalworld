@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crazy Styled OTP</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f7f7f7;
+    }
+    .otp-container {
+        margin-top: 50px;
+    }
+    .otp-input {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        border: 1px solid #ccc;
+        margin: 0 5px;
+        text-align: center;
+        display: inline-block;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    .keyboard-container {
+        margin-top: 20px;
+    }
+    .key {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        margin: 5px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        display: inline-block;
+        line-height: 40px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .key:hover {
+        background-color: #ddd;
+    }
+    .correct-otp {
+        margin-top: 20px;
+        color: #007bff;
+    }
+    .correct-otp a {
+        color: #007bff;
+        text-decoration: underline;
+    }
+    .instruction-container {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+<h1>Enter OTP</h1>
+<p>Hint: Smart of you to complete the previous quiz! Go back and check the options of Pi Question. <br>
+Add all the options of this question and remove the digits after decimal, you will get the first 2 digits of this OTP. <br>For next 4 digits check if you can find out in Nobel Prize.</p>
+<div class="otp-container">
+    <div class="otp-input" id="digit1" data-hint="First digit hint"></div>
+    <div class="otp-input" id="digit2" data-hint="Second digit hint"></div>
+    <div class="otp-input" id="digit3" data-hint="Third digit hint"></div>
+    <div class="otp-input" id="digit4" data-hint="Fourth digit hint"></div>
+    <div class="otp-input" id="digit5" data-hint="Fifth digit hint"></div>
+    <div class="otp-input" id="digit6" data-hint="Sixth digit hint"></div>
+</div>
+
+<div class="instruction-container">
+    <p id="hintText"></p>
+</div>
+
+<div class="keyboard-container">
+    <div class="key" onclick="addDigit('1')">Q</div>
+    <div class="key" onclick="addDigit('2')">W</div>
+    <div class="key" onclick="addDigit('3')">E</div>
+    <div class="key" onclick="addDigit('4')">R</div>
+    <div class="key" onclick="addDigit('5')">T</div><br>
+    <div class="key" onclick="addDigit('6')">Y</div>
+    <div class="key" onclick="addDigit('7')">U</div>
+    <div class="key" onclick="addDigit('8')">I</div>
+    <div class="key" onclick="addDigit('9')">O</div>
+    <div class="key" onclick="addDigit('0')">P</div><br>
+    <div class="key" onclick="addDigit('!')">!</div>
+    <div class="key" onclick="addDigit('@')">@</div>
+    <div class="key" onclick="addDigit('#')">#</div>
+    <div class="key" onclick="addDigit('$')">$</div>
+    <div class="key" onclick="addDigit('%')">%</div><br>
+    <div class="key" onclick="addDigit('&')">&</div>
+    <div class="key" onclick="addDigit('*')">*</div>
+    <div class="key" onclick="addDigit('(')">(</div>
+    <div class="key" onclick="addDigit(')')">)</div>
+    <div class="key" onclick="deleteDigit()">&lt;</div>
+</div>
+
+<div class="correct-otp" id="correctOTP" style="display: none;">
+    <p>Congratulations! You've entered the correct OTP. <a href="final.html?name=UNSTOPPABL3">Click here</a> to proceed.</p>
+</div>
+
+<script>
+    function addDigit(digit) {
+        const otpInputs = document.querySelectorAll('.otp-input');
+        for (let i = 0; i < otpInputs.length; i++) {
+            if (!otpInputs[i].innerText.trim()) {
+                otpInputs[i].innerText = digit;
+                if (i < otpInputs.length - 1) {
+                    otpInputs[i + 1].focus();
+                }
+                break;
+            }
+        }
+        checkOTP();
+    }
+
+    function deleteDigit() {
+        const otpInputs = document.querySelectorAll('.otp-input');
+        for (let i = otpInputs.length - 1; i >= 0; i--) {
+            if (otpInputs[i].innerText.trim()) {
+                otpInputs[i].innerText = '';
+                if (i > 0) {
+                    otpInputs[i - 1].focus();
+                }
+                break;
+            }
+        }
+        checkOTP();
+    }
+
+    function checkOTP() {
+        const otpInputs = document.querySelectorAll('.otp-input');
+        let otp = '';
+        for (let i = 0; i < otpInputs.length; i++) {
+            otp += otpInputs[i].innerText.trim();
+        }
+        if (otp.length === 6) {
+            if (otp === '121930') { // Change to your desired OTP
+                document.getElementById('correctOTP').style.display = 'block';
+            }
+        }
+    }
+
+    // Show hints for each digit
+    const hintElements = document.querySelectorAll('.otp-input');
+    hintElements.forEach(function(element) {
+        const hint = element.getAttribute('data-hint');
+        element.addEventListener('mouseover', function() {
+            document.getElementById('hintText').innerText = hint;
+        });
+        element.addEventListener('mouseleave', function() {
+            document.getElementById('hintText').innerText = '';
+        });
+    });
+
+    // Disable user keyboard input
+    window.addEventListener('keydown', function(e) {
+        e.preventDefault();
+    });
+</script>
+</body>
+</html>

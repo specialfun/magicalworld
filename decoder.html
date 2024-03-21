@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Decoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #messageInput {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #qrCode {
+            margin-top: 20px;
+        }
+
+        #submitBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #submitBtn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Secret Decoder</h1>
+    <input type="text" id="messageInput" placeholder="Input">
+    <button id="submitBtn">Generate Code</button>
+    <div id="qrCode"></div>
+
+    <div id="second" style="display: none;">
+        <input type="text" id="sMessageInput" placeholder="Decrypted message">
+        <button id="ssubmitBtn">Validate</button>
+    </div> <br> <br>
+    <!-- <a href="final.html?name=" id="link" style="display: none;">Receive the Gift!</a> -->
+    <script>
+        alert('This website is your gift. Use it wisely and only when asked to.')
+        const messageInput = document.getElementById('messageInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const ssubmitBtn = document.getElementById('ssubmitBtn');
+        const qrCodeContainer = document.getElementById('qrCode');
+
+        // Function to generate QR code for the secret message
+        function generateQRCode() {
+            const message = messageInput.value.trim();
+            if (message) {
+                // Encode the message using a simple Caesar cipher
+                const encodedMessage = encodeMessage(message);
+                // Generate QR code for the encoded message
+                const qrCodeCanvas = document.createElement('canvas');
+                qrCodeContainer.innerHTML = '';
+                qrCodeContainer.appendChild(qrCodeCanvas);
+                qrCodeCanvas.width = 200;
+                qrCodeCanvas.height = 200;
+                const qrCodeContext = qrCodeCanvas.getContext('2d');
+                qrCodeContext.fillStyle = '#FFFFFF';
+                qrCodeContext.fillRect(0, 0, qrCodeCanvas.width, qrCodeCanvas.height);
+                qrCodeContext.fillStyle = '#000000';
+                qrCodeContext.fillText(encodedMessage, 10, 20);
+            } else {
+                qrCodeContainer.innerHTML = 'Please enter a message';
+            }
+
+            // if (message == 'pew pew') {
+            //     alert('You might need to convert this message from a converter?');
+            //     const second = document.getElementById('second');
+            //     second.style.display = 'block';
+            // } else {
+            //     alert('Wrong Code. Maybe try again?');
+            // }
+        }
+
+        // Function to encode the message using a Caesar cipher
+        function encodeMessage(message) {
+            const shift = 3; // Shift value for the Caesar cipher
+            let encodedMessage = '';
+            for (let i = 0; i < message.length; i++) {
+                let charCode = message.charCodeAt(i);
+                if (charCode >= 65 && charCode <= 90) { // Uppercase letters
+                    charCode = ((charCode - 65 + shift) % 26) + 65;
+                } else if (charCode >= 97 && charCode <= 122) { // Lowercase letters
+                    charCode = ((charCode - 97 + shift) % 26) + 97;
+                }
+                encodedMessage += String.fromCharCode(charCode);
+            }
+            return encodedMessage;
+        }
+
+        function redirect(){
+            const sMessageInput = document.getElementById('sMessageInput');
+            const smessage = sMessageInput.value.trim();
+            console.log(smessage);
+            if(smessage=='Ranjana pagal'){
+                alert("Very true!");
+                const link = document.getElementById('link');
+                link.style.display = 'block';
+            }else{
+                alert("Incorrect, verry sadd..");
+            }
+        }
+        // Event listener for submit button click
+        submitBtn.addEventListener('click', generateQRCode);
+        ssubmitBtn.addEventListener('click', redirect);
+
+        // Initial QR code generation
+        // generateQRCode();
+    </script>
+</body>
+
+</html>

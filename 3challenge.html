@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Image Validator</title>
+<style>
+  /* Center align the content */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Light gray background color */
+    font-family: Arial, sans-serif; /* Font style */
+  }
+  /* Style the form */
+  form {
+    text-align: center;
+    background-color: #fff; /* White background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth effect */
+  }
+  /* Style the input fields and submit button */
+  input[type="text"] {
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+  }
+  input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green submit button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  input[type="submit"]:active {
+    transform: translateY(2px); /* Push button down slightly on click */
+  }
+  /* Style the error message */
+  #errorMessage {
+    color: red;
+    margin-top: 10px;
+    display: none;
+  }
+  /* Style the happy image */
+  #happyImage {
+    margin-top: 20px;
+    display: none;
+  }
+  #img {
+    width: 200px;
+  height: auto; /* Maintain aspect ratio */
+
+  }
+</style>
+</head>
+<body>
+
+<form id="inputForm" onsubmit="validateInputs(event)">
+  <h3>This is an input task. Complete it with 3G Speed.</h3>
+  <h5>First letter will be capital</h5>
+  <input type="text" id="glow" required><br>
+  <input type="text" id="grow" required><br>
+  <input type="text" id="go" required><br>
+  <input type="submit" value="Submit">
+</form>
+
+<div id="errorMessage"></div>
+
+<div id="happyImage">
+  <h3>Awesome Hotty!! Pat your back for still remembering it.</h3>
+ <center> <a href="final.html?name=SUNSHINE88"><img id="img" src="Images/1.jpg" alt="Happy Image"></a></center>
+</div>
+
+<script>
+function validateInputs(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Get input values
+  var glow = document.getElementById('glow').value.trim();
+  var grow = document.getElementById('grow').value.trim();
+  var go = document.getElementById('go').value.trim();
+  
+  // Validate inputs
+  var validGlow = glow === 'Glow';
+  var validGrow = grow === 'Grow';
+  var validGo = go === 'Go';
+  
+  if (validGlow && validGrow && validGo) {
+    // Inputs are correct, display happy image
+    document.getElementById('inputForm').style.display = 'none';
+    document.getElementById('happyImage').style.display = 'block';
+    document.getElementById('errorMessage').style.display = 'none';
+  } else {
+    // Inputs are incorrect, display error message
+    document.getElementById('errorMessage').textContent = 'Incorrect';
+    document.getElementById('errorMessage').style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>

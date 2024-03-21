@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Hint</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #camera-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #camera-view {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #007bff;
+            /* Blue */
+            color: #fff;
+            /* White */
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        #close-camera-button {
+            background-color: #ff3333;
+            /* Red */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Guess Your Gift. Hint is below</h1>
+    <div id="camera-container">
+        <video id="camera-view" autoplay playsinline></video>
+        <div class="button-container">
+            <button id="open-camera-button" class="button">Open</button>
+            <button id="close-camera-button" class="button" style="display: none;">Stop</button>
+        </div>
+    </div> <br> <br>
+    <div id="nice-message" style="display: none;">Ahhhhh, you look beautiful. Hehehe. Did you guess the gift? Keep trying</div>
+
+    <div id="second" style="display: none;">
+        <input type="text" id="sMessageInput" placeholder="Answer">
+        <button id="ssubmitBtn">Validate</button>
+    </div> <br> <br>
+    <a href="final.html?name=DREAM5REALIZED" id="link" style="display: none;">Receive the Gift!</a>
+
+    <script>
+        const cameraView = document.getElementById('camera-view');
+        const openCameraButton = document.getElementById('open-camera-button');
+        const closeCameraButton = document.getElementById('close-camera-button');
+        const niceMessage = document.getElementById('nice-message');
+
+        openCameraButton.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'user' } // Use front camera
+                });
+                cameraView.srcObject = stream;
+                openCameraButton.style.display = 'none';
+                closeCameraButton.style.display = 'inline-block';
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+            }
+        });
+
+        closeCameraButton.addEventListener('click', () => {
+            const stream = cameraView.srcObject;
+            const tracks = stream.getTracks();
+            tracks.forEach(track => track.stop());
+            cameraView.srcObject = null;
+            openCameraButton.style.display = 'inline-block';
+            closeCameraButton.style.display = 'none';
+
+            const second = document.getElementById('second');
+            second.style.display = 'block';
+            niceMessage.style.display = 'block';
+        });
+
+        ssubmitBtn.addEventListener('click', redirect);
+        function redirect() {
+            const sMessageInput = document.getElementById('sMessageInput');
+            const smessage = sMessageInput.value.trim();
+            console.log(smessage);
+            if (smessage == 'Mirror') {
+                alert("Perfect!!");
+                const link = document.getElementById('link');
+                link.style.display = 'block';
+            } else if(smessage == 'mirror'){
+                alert("m is capital dear!");
+            }            
+            else {
+                alert("Incorrect, verry sadd..");
+            }
+        }
+    </script>
+</body>
+
+</html>

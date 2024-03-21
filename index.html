@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Links Website</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  header {
+    background-color: #4CAF50;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 36px;
+    margin-bottom: 20px;
+    border-bottom: 5px solid #388E3C;
+    border-radius: 10px 10px 0 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+    border: 2px solid #4CAF50;
+    padding: 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .link:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .link img {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+</style>
+</head>
+<body>
+<header>
+🌟 Welcome to The Gift Zone 🌈
+</header>
+<div class="container" id="links-container">
+<!-- Initially display 1 link -->
+<a class="link" href="happy.html"><img src="gift.png"> Gift 1</a>
+</div>
+
+<script>
+// Array of unique links
+var linksArray = [
+    "converter.html",      //2
+    "quiz.html",           //3
+    "otp.html",            //4
+    "3challenge.html",     //5
+    "bubblepop/bubblepop.html",        //6
+    "choice.html",         //7
+    "rps/index.html",           //8
+    "breathe.html",   //9
+    "Camera.html",     //10
+    "fatring/index.html",     //11
+    "gifpage/gifpage.html",   //12
+    "notbot-master/index.html",         //13
+    "automatic.html",   //14
+    "decoder.html",   //15
+    "blurlines.html",   //16
+    "dream.html",   //17
+    "snake/index.html",   //18
+    "virus.html",   //19
+    "calendar.html",   //20
+    "otp2.html",   //21
+    "bestper.html",   //22
+    "photogallery.html",   //23
+    "last.html"     //24
+];
+
+// Function to add a new link
+function addNewLink(linkNumber) {
+    var container = document.getElementById('links-container');
+    var newLink = document.createElement('a');
+    newLink.setAttribute('class', 'link');
+    newLink.setAttribute('href', linksArray[linkNumber -2]);
+    newLink.innerHTML = '<img src="gift.png" > Gift ' + linkNumber;
+    container.appendChild(newLink);
+}
+
+// Get the current date and time
+var currentDate = new Date();
+var currentHour = currentDate.getHours();
+
+// Variable to track the number of links added
+var linksAdded = 1;
+
+// Add new links every hour until reaching 24 links
+for (var i = 1; i <= currentHour && linksAdded < 24; i++) {
+    addNewLink(i + 1); // Adding 1 to link number to skip the initial link
+    linksAdded++;
+}
+</script>
+</body>
+</html>
