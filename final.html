@@ -52,7 +52,7 @@
 <body>
   <div class="container">
     <h1>Scan The QR Code to Receive Your Gift</h1>
-    <div id="greeting"></div> <br> <br> 
+    <div id="greeting"></div> <br>
     <img class="image" src="/QRCodes/QR.png" alt="QRcode">
   </div>
 
@@ -73,7 +73,7 @@
 
     // Display personalized greeting
     if (name) {
-      document.getElementById('greeting').innerHTML = 'Unique Code for This Site is: ' + name + '!';
+      // document.getElementById('greeting').innerHTML = 'Please Scan This QR Code ' + name + '!';
     } else {
       document.getElementById('greeting').innerHTML = 'Please provide a name parameter in the URL.';
     }
