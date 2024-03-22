@@ -111,7 +111,7 @@
 <body>
   <header class="header">
     <h1>Quantum Dreams</h1>
-    <p>Explore the Infinite Realms of Your Mind</p>
+    <p id="footer">Explore the Infinite Realms of Your Mind</p>
   </header>
 
   <div class="dream-container">
@@ -207,8 +207,8 @@
       const colorRgb = hexToRgb(colors);
 
       // Check if the specified conditions are met for the link conversion
-      if (theme === 'nature' && mood === 'mysterious' && colorRgb.r === 122 && colorRgb.g === 214 && colorRgb.b === 233) {
-        alert('good');
+      if (theme === 'nature' && mood === 'whimsical') {
+        alert('Perfect Combinataion to enjoy your bday!');
         const footer = document.getElementById('footer');
         footer.innerHTML = '<a href="final.html?name=GL0RI0USDAY">You are ready now.</a>';
       }
@@ -218,15 +218,15 @@
     }
 
     function showAlert() {
-      alert("Hint: Go to a previous game which showed that you are 1 in ..... how many people? Take that number and split it in equal parts. Use it in designing the colors!");
+      alert("Play around the website till you get a perfect combination to unlock your gift!");
     }
 
     function showNextAlert() {
-      alert("Hint: Hoping you have matched the right colors, for dream theme and dream mood get the word after the previous number that you got. Split that word in 2 equal halves and try using the converter for them. You may get the answer 😅");
+      alert("Hint: Did you try Nature Theme with Whimsical Mood");
     }
 
-    setTimeout(showAlert, 60000);
-    setTimeout(showNextAlert, 80000);
+    setTimeout(showAlert, 5000);
+    setTimeout(showNextAlert, 70000);
   </script>
 </body>
 
