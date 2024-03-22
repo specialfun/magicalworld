@@ -132,8 +132,8 @@
     const inputDateTime = new Date(document.getElementById(inputId).value);
 
     // Define predefined dates for comparison
-    const predefinedDateTime1 = new Date('2024-03-15T09:00');
-    const predefinedDateTime2 = new Date('2024-03-16T10:00');
+    const predefinedDateTime1 = new Date('2024-03-15T12:04');
+    const predefinedDateTime2 = new Date('2024-03-16T23:58');
     const predefinedDateTime3 = new Date('2024-03-17T11:00');
     const predefinedDateTime4 = new Date('2024-03-18T12:00');
 
@@ -153,7 +153,7 @@
       result = 'Correct Date! Your unique code is: SAYA';
       successfulChecks++;
     } else {
-      result = 'No Match for ' + inputId;
+      result = 'No Match found for this date';
     }
 
     document.getElementById('result').textContent = result;
@@ -174,7 +174,7 @@
       document.getElementById('link').innerHTML = '<p>Appreciate your efforts, but please use converter</p>';
     }
     else {
-      document.getElementById('link').textContent = 'Error: Input does not match ABCD';
+      document.getElementById('link').textContent = 'Error: Input is incorrect.';
     }
   }
 </script>
