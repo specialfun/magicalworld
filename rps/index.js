@@ -1,6 +1,6 @@
 "use strict";
 
-alert('Let the game begin!');
+alert('Simple Rock Paper Scissors game... Play against computer to win. This is all Random 😂');
 let computerChoice;
 let userChoice;
 let userScore = 0;
