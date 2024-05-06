@@ -88,25 +88,25 @@
 <form id="date-time-form">
   <div>
     <label for="datetime1">Shik Shak Shok</label>
-    <input type="datetime-local" id="datetime1" name="datetime1" value="2024-03-15T09:00">
+    <input type="datetime-local" id="datetime1" name="datetime1" value="2024-03-01T09:00">
     <button type="button" class="check-btn orange" onclick="checkDateTime('datetime1')">Check</button>
   </div>
 
   <div>
     <label for="datetime2">Ek dum Krishna Lage che</label>
-    <input type="datetime-local" id="datetime2" name="datetime2" value="2024-03-16T10:00">
+    <input type="datetime-local" id="datetime2" name="datetime2" value="2024-03-01T09:00">
     <button type="button" class="check-btn pink" onclick="checkDateTime('datetime2')">Check</button>
   </div>
 
   <div>
-    <label for="datetime3">Date and Time 3:</label>
-    <input type="datetime-local" id="datetime3" name="datetime3" value="2024-03-17T11:00">
+    <label for="datetime3">Chinchpokli:</label>
+    <input type="datetime-local" id="datetime3" name="datetime3" value="2024-03-01T09:00">
     <button type="button" class="check-btn blue" onclick="checkDateTime('datetime3')">Check</button>
   </div>
 
   <div>
-    <label for="datetime4">Date and Time 4:</label>
-    <input type="datetime-local" id="datetime4" name="datetime4" value="2024-03-18T12:00">
+    <label for="datetime4">Bado badi</label>
+    <input type="datetime-local" id="datetime4" name="datetime4" value="2024-03-01T09:00">
     <button type="button" class="check-btn green" onclick="checkDateTime('datetime4')">Check</button>
   </div>
 </form>
@@ -116,7 +116,7 @@
 <div id="finalInputContainer">
   <form id="link-form">
     <div>
-      <label for="finalInput">Final Input:</label>
+      <label for="finalInput">Great that you found all correctly!! Now combine the full string and enter the Final Input:</label>
       <input type="text" id="finalInput" name="finalInput">
       <button type="button" class="check-btn blue" onclick="checkFinalInput()">Check</button>
     </div>
@@ -134,8 +134,8 @@
     // Define predefined dates for comparison
     const predefinedDateTime1 = new Date('2024-03-15T12:04');
     const predefinedDateTime2 = new Date('2024-03-16T23:58');
-    const predefinedDateTime3 = new Date('2024-03-17T11:00');
-    const predefinedDateTime4 = new Date('2024-03-18T12:00');
+    const predefinedDateTime3 = new Date('2024-04-12T22:31');
+    const predefinedDateTime4 = new Date('2024-05-06T17:29');
 
     let result = '';
 
@@ -171,7 +171,7 @@
       document.getElementById('link').innerHTML = '<a href="final.html?name=ATTRACTGOODNES7">Success! Click here</a>';
     } 
     else if (inputValue === 'SSSWOWPEWPEWSAYA'){
-      document.getElementById('link').innerHTML = '<p>Appreciate your efforts, but please use converter</p>';
+      document.getElementById('link').innerHTML = '<p>Appreciate your efforts, but please use converter and try again</p>';
     }
     else {
       document.getElementById('link').textContent = 'Error: Input is incorrect.';
